@@ -95,8 +95,13 @@ main
     width: 30%;
     padding-left: 50px;
 }
+.column_left img
+{
+    width: 200px;
+}
 .column_right
 {
+    padding-top: 10px;
     width: 70%;
     color: white;
     font-weight: 600;
