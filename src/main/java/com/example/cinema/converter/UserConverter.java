@@ -7,6 +7,7 @@ public class UserConverter {
     public static UserEntity toEntity(User user){
         UserEntity entity = new UserEntity();
             entity.setUsername(user.getUsername());
+            entity.setPassword(user.getPassword());
             entity.setAge(user.getAge());
             entity.setPhone(user.getPhone());
             entity.setEmail(user.getEmail());

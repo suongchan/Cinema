@@ -5,15 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Danh sách Tin tức | Admin Web</title>
+  <title>Danh sách Khách hàng | Admin Web</title>
   <link rel="stylesheet" href="js/app.js">
-  <link rel="shortcut icon" href="../static/ImageAdmin/logo-mb.png" type="image/png">
+  <link rel="shortcut icon" href="../../static/ImageAdmin/logo-mb.png" type="image/png">
   <!-- GOOGLE FONT -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <!-- BOXICONS -->
   <link href="https://fonts.gstatic.com" rel="stylesheet">
-  <link rel="stylesheet" href="../static/css/adminNews.css">
+  <link rel="stylesheet" href="../../static/css/cssAdmin/adminCustomer.css">
 
 </head>
 <body>
@@ -29,7 +29,7 @@
   </div>
   <div class="sidebar-user">
     <div class="sidebar-user-info">
-      <img src="../static/ImageAdmin/user-image-2.png" alt="User picture" class="profile-image">
+      <img src="../../static/ImageAdmin/user-image-2.png" alt="User picture" class="profile-image">
       <div class="sidebar-user-name">Admin</div>
     </div>
     <button class="btn btn-outline">
@@ -41,9 +41,9 @@
     <span class="permanent">Quản trị</span>
     <li><a href="#"> <i class='bx bx-chart'></i> <span>quản trị</span> </a></li>
     <li><a href="#"> <i class='bx bx-chart'></i> <span>tài khoản</span> </a></li>
-    <li><a href="#"> <i class='bx bx-chart'></i> <span> khách hàng </span> </a></li>
+    <li><a href="#" class="active"> <i class='bx bx-home'></i> <span>Khách hàng</span> </a></li>
     <li><a href="#"> <i class='bx bx-chart'></i> <span> thể loại </span> </a></li>
-    <li><a href="#" class="active"> <i class='bx bx-home'></i> <span>tin tức</span> </a></li>
+    <li><a href="#"> <i class='bx bx-chart'></i> <span> tin tức </span> </a></li>
 
     <span class="permanent">Danh mục</span>
     <li><a href="#"> <i class='bx bx-shopping-bag'></i> <span>Rạp chiếu</span> </a></li>
@@ -111,7 +111,7 @@
     <div class="box-body overflow-scroll">
 
       <div class="header-right">
-        <img src="../static/ImageAdmin/user-image-2.png" alt="admin-logo">
+        <img src="../../static/ImageAdmin/user-image-2.png" alt="admin-logo">
         <span class="header-text"> Admin</span>
       </div>
       <!--        <thead>-->
@@ -152,8 +152,8 @@
       <!--      </table>-->
       <div class="admin-taikhoan">
         <div class="taikhoan-header">
-          <span class="text1">Tin tức</span>
-          <span class="text2">Danh sách tin tức</span>
+          <span class="text1">Khách hàng</span>
+          <span class="text2">Danh sách khách hàng</span>
         </div>
         <div class="taikhoan-body">
           <div class="search">
@@ -167,17 +167,19 @@
           <table>
             <tbody>
             <tr class="headline">
-              <td>Hình ảnh</td>
-              <td>Tiêu đề</td>
-              <td>Mô tả</td>
-              <td>Ngày tạo</td>
+              <td>Tài khoản</td>
+              <td>Họ tên</td>
+              <td>SĐT</td>
+              <td>Email</td>
+              <td>CCCD</td>
               <td>Tác vụ</td>
             </tr>
             <tr class="staff">
-              <td> <img src="../static/ImageAdmin/tin-tuc.png" alt="tin-tuc-1"></td>
-              <td>SỐC</td>
-              <td>Sale “Sốc” – Rinh Combo Phim “Cực Bốc</td>
-              <td>15/09/2023</td>
+              <td>anhtuanbarbell</td>
+              <td>Nguyễn Anh Tuấn</td>
+              <td>0379624900</td>
+              <td>anhtuan2982001@gmail.com</td>
+              <td>049202010876</td>
               <td>
                 <div class="payment-status payment-pending">
                   <a href="#">Edit</a>
@@ -187,23 +189,6 @@
                 </div>
               </td>
             </tr>
-
-            <tr class="staff">
-              <td> <img src="../static/ImageAdmin/tin-tuc.png" alt="tin-tuc-1"></td>
-              <td>SỐC</td>
-              <td>Sale “Sốc” – Rinh Combo Phim “Cực Bốc</td>
-              <td>15/09/2023</td>
-              <td>
-                <div class="payment-status payment-pending">
-                  <a href="#">Edit</a>
-                </div>
-                <div class="delete">
-                  <a href="#">Delete</a>
-                </div>
-              </td>
-            </tr>
-
-
             </tbody>
           </table>
         </div>

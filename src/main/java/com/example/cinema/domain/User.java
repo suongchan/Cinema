@@ -8,7 +8,7 @@ import lombok.Setter;
 public class User {
     private Long id;
     private String username;
-
+    private String password;
     private Integer age;
     private String phone;
     private String email;
