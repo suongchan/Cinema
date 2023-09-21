@@ -35,7 +35,7 @@
 </head>
 <body>
 <h2>Register</h2>
-<form method="POST" th:action="@{/users/register}" th:object="${user}" > <!-- Đặt action theo URL xử lý đăng ký -->
+<form method="POST" th:action="@{/signup}" th:object="${user}" > <!-- Đặt action theo URL xử lý đăng ký -->
     <!-- Trường ID (id) - Sẽ tự động tạo khi đăng ký -->
     <input type="hidden" name="id" value="0">
 
