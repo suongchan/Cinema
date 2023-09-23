@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,5 +38,10 @@ public class UserServiceImpl implements UserService {
         UserEntity entity = UserConverter.toEntity(user);
         entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         userRepository.save(entity);
+    }
+
+    @Override
+    public List<UserEntity> getCustomers() {
+        return userRepository.findByRole("ROLE_USER");
     }
 }
