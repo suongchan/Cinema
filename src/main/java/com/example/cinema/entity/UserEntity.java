@@ -13,11 +13,19 @@ public class UserEntity {
     private Long id;
     private String username;
     private String password;
-
     private Integer age;
     private String phone;
     private String email;
     private String address;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public Long getId() {
         return id;

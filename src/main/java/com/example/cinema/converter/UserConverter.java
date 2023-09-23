@@ -12,6 +12,7 @@ public class UserConverter {
             entity.setPhone(user.getPhone());
             entity.setEmail(user.getEmail());
             entity.setAddress(user.getAddress());
+            entity.setRole("ROLE_USER");
         return entity;
     }
 }
