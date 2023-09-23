@@ -20,7 +20,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             response.sendRedirect("admin");
         }
         if(roles.contains("ROLE_USER")) {
-            response.sendRedirect("user");
+            response.sendRedirect("staff");
+        }
+        if(roles.contains("ROLE_CUSTOMER")) {
+            response.sendRedirect("customer");
         }
     }
 }
