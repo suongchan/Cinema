@@ -28,6 +28,8 @@ public class SecurityConfig {
                                         .hasRole("ADMIN")
                                         .requestMatchers("/user*")
                                         .hasRole("USER")
+                                        .requestMatchers("/customer*")
+                                        .hasRole("CUSTOMER")
 //                        .requestMatchers("/anonymous*")
 //                        .anonymous()
                                         .requestMatchers("/login*","/signup", "/home_customer*")
