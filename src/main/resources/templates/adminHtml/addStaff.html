@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <!-- BOXICONS -->
   <link href="https://fonts.gstatic.com" rel="stylesheet">
-  <link rel="stylesheet" href="../../static/css/cssAdmin/adminCustomer.css">
+  <link rel="stylesheet" href="../../static/css/cssAdmin/addCustomer.css">
 
 </head>
 <body>
@@ -152,11 +152,12 @@
       <!--      </table>-->
       <div class="admin-taikhoan">
         <div class="taikhoan-header">
-          <span class="text1">Khách hàng</span>
-          <span class="text2">Thêm khách hàng</span>
+          <span class="text1">Nhân viên</span>
+          <span class="text2">Thêm nhân viên</span>
         </div>
+        <div class="taikhoan-body">
 
-        <form class="form-containers" th:action="@{/admin/addCustomer}" method="POST" th:object="user">
+        <form class="form-containers"  th:action="@{/admin/addStaff}" method="POST" th:object="${user}">
           <input type="hidden" name="id" value="0">
           <div class="form-row" >
           <label for="name">Họ và Tên</label>
@@ -165,28 +166,29 @@
 
           <div class="form-row" >
             <label for="username">Tên đăng nhập:</label>
-            <input type="text" id="username" name="username" required th:text="*{us}">
+            <input type="text" id="username" name="username" required th:text="*{username}">
           </div>
 
           <div class="form-row" >
-            <label for="date">Ngày sinh:</label>
-            <input type="text" id="date" name="dateOfBirth" required th:text="*{}">
+            <label for="join_datepicker">Ngày sinh:</label>
+            <input type="date" class="form-control" placeholder="yyyy-MM-dd" id="join_datepicker" th:field="*{dateOfBirth}">
           </div>
           <div class="form-row" >
             <label for="name">Số điện thoại</label>
-            <input type="text" id="phone" name="name" required th:text="*{name}">
+            <input type="text" id="phone" name="phone" required th:text="*{phone}">
           </div>
           <div class="form-row" >
             <label for="Email">Email</label>
-            <input type="Email" id="Email" name="Email" required th:text="*{name}">
+            <input type="Email" id="Email" name="Email" required th:text="*{email}">
           </div>
           <div class="form-row" >
             <label for="address">Địa chỉ</label>
-            <input type="text" id="address" name="address" required th:text="*{name}">
+            <input type="text" id="address" name="address" required th:text="*{address}">
           </div>
 
           <input type="submit" value="Lưu">
         </form>
+
         </div>
       </div>
     </div>
