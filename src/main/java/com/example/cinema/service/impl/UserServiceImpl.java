@@ -14,7 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -54,7 +56,7 @@ public class UserServiceImpl implements UserService {
     public boolean updatePassword(String username, String oldPassword, String newPassword) {
         UserPrincipal userPrincipal = (UserPrincipal) userDetailsService.loadUserByUsername(username);
         UserEntity entity = userRepository.findByUsername(username).orElseThrow();
-        if (passwordEncoder.matches(oldPassword, userPrincipal.getPassword())){
+        if (passwordEncoder.matches(oldPassword, userPrincipal.getPassword())) {
             String encodedNewPassword = passwordEncoder.encode(newPassword);
             entity.setPassword(encodedNewPassword);
             userRepository.save(entity);
@@ -63,4 +65,47 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
+    @Override
+    public UserEntity getUserById(Long id) {
+        return userRepository.getById(id);
+    }
+
+    @Override
+    public void deleteUser(Long id) throws UserPrincipalNotFoundException {
+        // Kiểm tra xem khách hàng tồn tại trong cơ sở dữ liệu không
+        Optional<UserEntity> existingCustomer = userRepository.findById(id);
+
+        if (existingCustomer.isPresent()) {
+            // Nếu khách hàng tồn tại, thực hiện thao tác xóa
+            userRepository.deleteById(id);
+        } else {
+            // Xử lý trường hợp không tìm thấy khách hàng
+            throw new UserPrincipalNotFoundException("Không tìm thấy khách hàng với ID " + id);
+        }
+    }
+
+    @Override
+    public void updateUser(User user) throws UserPrincipalNotFoundException {
+
+            Optional<UserEntity> existingUser = userRepository.findById(user.getId());
+
+            if (existingUser.isPresent()) {
+                // Nếu khách hàng tồn tại, cập nhật thông tin
+                UserEntity updatedUser = existingUser.get();
+                updatedUser.setName(user.getName());
+                updatedUser.setDateOfBirth(user.getDateOfBirth());
+                updatedUser.setPhone(user.getPhone());
+                updatedUser.setEmail(user.getEmail());
+                updatedUser.setPhone(user.getPhone());
+                updatedUser.setAddress(user.getAddress());
+
+                // Lưu khách hàng đã cập nhật vào cơ sở dữ liệu
+                userRepository.save(updatedUser);
+            } else {
+                // Xử lý trường hợp không tìm thấy khách hàng
+                throw new UserPrincipalNotFoundException("Không tìm thấy khách hàng với ID " + user.getId());
+            }
+
+        }
 }
