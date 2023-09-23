@@ -1,6 +1,8 @@
 package com.example.cinema.controller;
 
+import com.example.cinema.converter.UserConverter;
 import com.example.cinema.domain.User;
+import com.example.cinema.entity.UserEntity;
 import com.example.cinema.service.UserService;
 import com.example.cinema.validator.UserRegisterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +32,20 @@ public class UserController {
 
     @PostMapping("register")
     public String creatUser(@ModelAttribute User user, Model model) {
+
+        if (userRegisterValidator.validateRegisterUser(user)){
+            userService.register(user);
+            return "customerHtml/login";
+        }
+        model.addAttribute("messageError", "trùng gì đó rồi");
+        System.out.println("trùng rồi");
+        return "register/registration";
+
         Long id = userService.createUser(user);
         user.setId(id);
         model.addAttribute("user", user);
         return "register/detailUser";
+
     }
 
 //    private User getUser(Long userId) {
