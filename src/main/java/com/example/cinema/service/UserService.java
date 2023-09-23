@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserService {
     Long createUser(User user );
-    void register(User user) throws FieldMissMatchException;
+    void register(User user);
 
      List<UserEntity> getCustomers();
   

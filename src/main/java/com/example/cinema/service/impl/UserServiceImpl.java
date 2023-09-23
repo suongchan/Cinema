@@ -26,9 +26,6 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserRegisterValidator validator;
-
-    @Autowired
     private UserDetailsService userDetailsService;
 
     @Override
@@ -38,11 +35,8 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void register(User user) throws FieldMissMatchException {
-        validator.validateRegisterUser(user);
-        UserEntity entity = UserConverter.toEntity(user);
-        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
-        userRepository.save(entity);
+    public void register(User user){
+        userRepository.save(UserConverter.toEntity(user));
     }
 
     @Override
