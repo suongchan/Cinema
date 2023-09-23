@@ -1,6 +1,9 @@
 package com.example.cinema.entity;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "users")
@@ -11,13 +14,23 @@ public class UserEntity {
     @Column(name = "id", nullable = false)
 
     private Long id;
+    private String name;
     private String username;
     private String password;
-    private Integer age;
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date dateOfBirth;
     private String phone;
     private String email;
     private String address;
     private String role;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getRole() {
         return role;
@@ -61,12 +74,12 @@ public class UserEntity {
         this.password = password;
     }
 
-    public Integer getAge() {
-        return age;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getPhone() {

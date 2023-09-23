@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Danh sách Khách hàng | Admin Web</title>
+  <title>Thêm Khách hàng | Admin Web</title>
   <link rel="stylesheet" href="js/app.js">
   <link rel="shortcut icon" href="../../static/ImageAdmin/logo-mb.png" type="image/png">
   <!-- GOOGLE FONT -->
@@ -153,49 +153,40 @@
       <div class="admin-taikhoan">
         <div class="taikhoan-header">
           <span class="text1">Khách hàng</span>
-          <span class="text2">Danh sách khách hàng</span>
+          <span class="text2">Thêm khách hàng</span>
         </div>
-        <div class="taikhoan-body">
-          <div class="search">
-            <!-- Ô tìm kiếm -->
-            <input type="text" id="search" placeholder="Tìm kiếm...">
-            <a href="/admin/searchCustomer">
-              <button id="searchCustomer">Tìm kiếm</button>
-            </a>
-            <a href="/admin/addCustomer">
-              <button id="addCustomer">Thêm</button>
-            </a>
+
+        <form class="form-containers" th:action="@{/admin/addCustomer}" method="POST" th:object="user">
+          <input type="hidden" name="id" value="0">
+          <div class="form-row" >
+          <label for="name">Họ và Tên</label>
+          <input type="text" id="name" name="name" required th:text="*{name}">
           </div>
 
+          <div class="form-row" >
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" name="username" required th:text="*{us}">
+          </div>
 
-          <table>
-            <tbody>
-            <tr class="headline">
-              <td>Họ tên</td>
-              <td>Tên đăng nhập</td>
-              <td>Ngày sinh</td>
-              <td>Số điện thoại</td>
-              <td>Email</td>
-              <td>Địa chỉ</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr th:each="customer : ${users}">
-              <td th:text="${customer.name}"></td>
-              <td th:text="${customer.username}"></td>
-              <td th:text="${customer.dateOfBirth}"></td>
-              <td th:text="${customer.phone}"></td>
-              <td th:text="${customer.email}"></td>
-              <td th:text="${customer.address}"></td>
-                <td class="payment-status payment-pending">
-                  <a href="#">Edit</a>
-                </td>
-                <td class="delete">
-                  <a href="#">Delete</a>
-                </td>
-            </tr>
-            </tbody>
-          </table>
+          <div class="form-row" >
+            <label for="date">Ngày sinh:</label>
+            <input type="text" id="date" name="dateOfBirth" required th:text="*{}">
+          </div>
+          <div class="form-row" >
+            <label for="name">Số điện thoại</label>
+            <input type="text" id="phone" name="name" required th:text="*{name}">
+          </div>
+          <div class="form-row" >
+            <label for="Email">Email</label>
+            <input type="Email" id="Email" name="Email" required th:text="*{name}">
+          </div>
+          <div class="form-row" >
+            <label for="address">Địa chỉ</label>
+            <input type="text" id="address" name="address" required th:text="*{name}">
+          </div>
+
+          <input type="submit" value="Lưu">
+        </form>
         </div>
       </div>
     </div>

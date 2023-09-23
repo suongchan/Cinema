@@ -5,14 +5,15 @@ import com.example.cinema.entity.UserEntity;
 
 public class UserConverter {
     public static UserEntity toEntity(User user){
-        UserEntity entity = new UserEntity();
-            entity.setUsername(user.getUsername());
-            entity.setPassword(user.getPassword());
-            entity.setAge(user.getAge());
-            entity.setPhone(user.getPhone());
-            entity.setEmail(user.getEmail());
-            entity.setAddress(user.getAddress());
-            entity.setRole("ROLE_USER");
-        return entity;
+        UserEntity userEntity = new UserEntity();
+        userEntity.setName(user.getName());
+        userEntity.setUsername(user.getUsername());
+        userEntity.setPassword(user.getPassword());
+        userEntity.setDateOfBirth(user.getDateOfBirth());
+        userEntity.setPhone(user.getPhone());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setAddress(user.getAddress());
+        userEntity.setRole("ROLE_USER");
+        return userEntity;
     }
 }
