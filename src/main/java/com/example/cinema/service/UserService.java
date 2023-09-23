@@ -11,5 +11,6 @@ public interface UserService {
     void register(User user) throws FieldMissMatchException;
 
      List<UserEntity> getCustomers();
-
+  
+    boolean updatePassword(String name, String oldPassword, String newPassword);
 }
