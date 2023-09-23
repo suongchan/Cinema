@@ -11,26 +11,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("users")
+@RequestMapping("")
 
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("register")
+    @GetMapping("signup")
     public String register(@ModelAttribute User user, Model model) {
         model.addAttribute("user", user);
         return "register/registration";
     }
 
-    @PostMapping("register")
+    @GetMapping("login")
+    public String index(){
+        return "customerHtml/login";
+    }
+
+    @PostMapping("signup")
     public String creatUser(@ModelAttribute User user, Model model) {
         Long id = userService.createUser(user);
         user.setId(id);
         model.addAttribute("user", user);
-        return "register/detailUser";
+        return "redirect:/login";
     }
+
+    @GetMapping("home_customer")
+    public String index1(){
+        return "user";
+    }
+//    @PostMapping ("/perform_login")
+//    public String index2() {
+//        return "user";
+//    }
 
 //    private User getUser(Long userId) {
 //        User user = new User();
