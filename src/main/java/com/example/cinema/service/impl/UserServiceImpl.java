@@ -14,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -40,11 +38,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-
-    public List<UserEntity> getCustomers() {
-        return userRepository.findByRole("ROLE_USER");
-    }
-
     public boolean updatePassword(String username, String oldPassword, String newPassword) {
         UserPrincipal userPrincipal = (UserPrincipal) userDetailsService.loadUserByUsername(username);
         UserEntity entity = userRepository.findByUsername(username).orElseThrow();
@@ -57,4 +50,6 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
+
 }
