@@ -28,9 +28,6 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserRegisterValidator validator;
-
-    @Autowired
     private UserDetailsService userDetailsService;
 
     @Override
@@ -40,19 +37,11 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void register(User user) throws FieldMissMatchException {
-        validator.validateRegisterUser(user);
-        UserEntity entity = UserConverter.toEntity(user);
-        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
-        userRepository.save(entity);
+    public void register(User user){
+        userRepository.save(UserConverter.toEntity(user));
     }
 
     @Override
-
-    public List<UserEntity> getCustomers() {
-        return userRepository.findByRole("ROLE_USER");
-    }
-
     public boolean updatePassword(String username, String oldPassword, String newPassword) {
         UserPrincipal userPrincipal = (UserPrincipal) userDetailsService.loadUserByUsername(username);
         UserEntity entity = userRepository.findByUsername(username).orElseThrow();
@@ -65,6 +54,7 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
 
     @Override
     public UserEntity getUserById(Long id) {
@@ -109,3 +99,7 @@ public class UserServiceImpl implements UserService {
 
         }
 }
+
+
+
+

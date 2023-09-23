@@ -1,6 +1,8 @@
 package com.example.cinema.controller;
 
+import com.example.cinema.converter.UserConverter;
 import com.example.cinema.domain.User;
+import com.example.cinema.entity.UserEntity;
 import com.example.cinema.service.UserService;
 import com.example.cinema.validator.UserRegisterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("users")
 
 public class UserController {
     @Autowired
@@ -22,33 +24,29 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("signup")
+    @GetMapping("register")
     public String register(@ModelAttribute User user, Model model) {
         model.addAttribute("user",user);
         return "register/registration";
     }
 
-    @GetMapping("login")
-    public String index(){
-        return "customerHtml/login";
-    }
-
-    @PostMapping("signup")
+    @PostMapping("register")
     public String creatUser(@ModelAttribute User user, Model model) {
+
+        if (userRegisterValidator.validateRegisterUser(user)){
+            userService.register(user);
+            return "customerHtml/login";
+        }
+        model.addAttribute("messageError", "trùng gì đó rồi");
+        System.out.println("trùng rồi");
+        return "register/registration";
+
         Long id = userService.createUser(user);
         user.setId(id);
         model.addAttribute("user", user);
-        return "redirect:/login";
-    }
+        return "register/detailUser";
 
-    @GetMapping("home_customer")
-    public String index1(){
-        return "user";
     }
-//    @PostMapping ("/perform_login")
-//    public String index2() {
-//        return "user";
-//    }
 
 //    private User getUser(Long userId) {
 //        User user = new User();
